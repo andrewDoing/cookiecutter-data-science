@@ -20,6 +20,11 @@ create_environment:
 	conda create --name $(PROJECT_NAME) python=$(PYTHON_VERSION) -y
 	@echo ">>> conda env created. Activate with:\nconda activate $(PROJECT_NAME)"
 
+## Set up python interpreter environment using uv
+create_environment_uv:
+	uv venv --python $(PYTHON_VERSION) .venv
+	@echo ">>> uv virtual environment created. Activate with:\nsource .venv/bin/activate"
+
 ## Install Python Dependencies
 requirements:
 	$(PYTHON_INTERPRETER) -m pip install -r dev-requirements.txt
