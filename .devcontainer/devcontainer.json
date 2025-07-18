@@ -1,6 +1,6 @@
 {
     "name": "Cookiecutter Data Science",
-    "image": "mcr.microsoft.com/devcontainers/python:3.10-bullseye",
+    "image": "mcr.microsoft.com/devcontainers/python:3.12-bullseye",
     
     // Features to add to the dev container
     "features": {

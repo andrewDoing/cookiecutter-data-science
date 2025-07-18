@@ -16,7 +16,7 @@ _A logical, reasonably standardized but flexible project structure for doing and
 
 ## Installation
 
-Cookiecutter Data Science v2 requires Python 3.9+. Since this is a cross-project utility application, we recommend installing it with [pipx](https://pypa.github.io/pipx/). Installation command options:
+Cookiecutter Data Science v2 requires Python 3.10+. Since this is a cross-project utility application, we recommend installing it with [pipx](https://pypa.github.io/pipx/). Installation command options:
 
 ```bash
 # With pipx from PyPI (recommended)
@@ -124,7 +124,7 @@ For the best development experience, we recommend using the provided dev contain
 1. Click the green "Code" button on GitHub
 2. Select "Codespaces" tab and create a new codespace
 
-The dev container includes Python 3.10, all development dependencies, and useful VS Code extensions pre-configured.
+The dev container includes Python 3.12, all development dependencies, and useful VS Code extensions pre-configured.
 
 ### Manual Setup
 

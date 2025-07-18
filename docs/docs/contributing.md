@@ -16,7 +16,7 @@ To contribute to this project, we recommend using the provided development conta
 4. When prompted, click "Reopen in Container" or use `Ctrl+Shift+P` → "Dev Containers: Reopen in Container"
 
 The dev container includes:
-- Python 3.10
+- Python 3.12
 - All development dependencies pre-installed
 - VS Code extensions for Python, Jupyter, Markdown, and more
 - Configured linting and formatting with Ruff
@@ -33,7 +33,7 @@ The dev container includes:
 
 If you prefer to set up your development environment manually:
 
-1. Ensure you have Python 3.9+ installed
+1. Ensure you have Python 3.10+ installed
 2. Clone the repository
 3. Install development requirements: `pip install -r dev-requirements.txt`
 

@@ -4,7 +4,7 @@ This directory contains the development container configuration for the Cookiecu
 
 ## What's Included
 
-- **Python 3.10** - The same version specified in the project Makefile
+- **Python 3.12** - The same version specified in the project Makefile
 - **Pre-installed extensions** for VS Code:
   - Python support with debugging and linting
   - Ruff for code formatting and linting
