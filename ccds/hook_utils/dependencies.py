@@ -5,11 +5,6 @@ packages = [
     "python-dotenv",
 ]
 
-flake8_black_isort = [
-    "black",
-    "flake8",
-    "isort",
-]
 
 ruff = ["ruff"]
 
@@ -80,7 +75,7 @@ def write_dependencies(
         with open(dependencies, "w") as f:
             lines = sorted(packages)
 
-            lines += ["" "-e ."]
+            lines += ["-e ."]
 
             f.write("\n".join(lines))
             f.write("\n")

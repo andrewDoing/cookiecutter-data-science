@@ -1,8 +1,8 @@
 import json
 import os
-import sys
 from pathlib import Path
 from subprocess import PIPE, run
+import sys
 
 from conftest import bake_project
 
@@ -86,9 +86,7 @@ def verify_folders(root, config):
         for d in expected_dirs
     ]
 
-    existing_dirs = [
-        d.resolve().relative_to(root) for d in root.glob("**") if d.is_dir()
-    ]
+    existing_dirs = [d.resolve().relative_to(root) for d in root.glob("**") if d.is_dir()]
 
     assert sorted(existing_dirs) == sorted(expected_dirs)
 
@@ -118,7 +116,8 @@ def verify_files(root, config):
     if not config["open_source_license"].startswith("No license"):
         expected_files.append("LICENSE")
 
-    if config["linting_and_formatting"] == "flake8+black+isort":
+    # setup.cfg is kept for backward compatibility with both linting options
+    if config["linting_and_formatting"] == "ruff":
         expected_files.append("setup.cfg")
 
     if config["include_code_scaffold"] == "Yes":

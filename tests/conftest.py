@@ -1,10 +1,10 @@
+from contextlib import contextmanager
+from itertools import cycle, product
 import json
+from pathlib import Path
 import shutil
 import sys
 import tempfile
-from contextlib import contextmanager
-from itertools import cycle, product
-from pathlib import Path
 
 import pytest
 
@@ -32,10 +32,7 @@ def config_generator(fast=False):
 
     configs = product(
         py_version,
-        [
-            ("environment_manager", opt)
-            for opt in cookiecutter_json["environment_manager"]
-        ],
+        [("environment_manager", opt) for opt in cookiecutter_json["environment_manager"]],
         [("dependency_file", opt) for opt in cookiecutter_json["dependency_file"]],
         [("pydata_packages", opt) for opt in cookiecutter_json["pydata_packages"]],
     )
@@ -43,9 +40,7 @@ def config_generator(fast=False):
     def _is_valid(config):
         config = dict(config)
         #  Pipfile + pipenv only valid combo for either
-        if (config["environment_manager"] == "pipenv") ^ (
-            config["dependency_file"] == "Pipfile"
-        ):
+        if (config["environment_manager"] == "pipenv") ^ (config["dependency_file"] == "Pipfile"):
             return False
         # conda is the only valid env manager for environment.yml
         if (config["dependency_file"] == "environment.yml") and (
@@ -61,10 +56,7 @@ def config_generator(fast=False):
     # otherwise, linting "passes" because one linter never runs on any code during tests
     code_format_cycler = cycle(
         product(
-            [
-                ("include_code_scaffold", opt)
-                for opt in cookiecutter_json["include_code_scaffold"]
-            ],
+            [("include_code_scaffold", opt) for opt in cookiecutter_json["include_code_scaffold"]],
             [
                 ("linting_and_formatting", opt)
                 for opt in cookiecutter_json["linting_and_formatting"]

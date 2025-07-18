@@ -1,9 +1,9 @@
 import json
-import shutil
 from pathlib import Path
+import shutil
 
-import pexpect
 from ansi2html import Ansi2HTMLConverter
+import pexpect
 
 CCDS_ROOT = Path(__file__).parents[2].resolve()
 
@@ -94,17 +94,13 @@ def render_termynal():
         # style bash user inputs
         if result.startswith("$"):
             result = conv.convert(result.strip("$"), full=False)
-            html_lines.append(
-                f'<span data-ty="input" data-ty-prompt="$">{result}</span>'
-            )
+            html_lines.append(f'<span data-ty="input" data-ty-prompt="$">{result}</span>')
 
         # style inline cookiecutter user inputs
         elif ":" in result and user_input in result:
             # treat all the options that were output as a single block
             if len(result_collector) > 1:
-                prev_results = conv.convert(
-                    "\n".join(result_collector[:-1]), full=False
-                )
+                prev_results = conv.convert("\n".join(result_collector[:-1]), full=False)
                 html_lines.append(f"<span data-ty>{prev_results}</span>")
 
             # split the line up into the prompt text with options, the default, and the user input

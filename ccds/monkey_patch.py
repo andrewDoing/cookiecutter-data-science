@@ -26,9 +26,7 @@ def _prompt_choice_and_subitems(cookiecutter_dict, env, key, options, no_input):
     else:
         selected = read_user_choice(key, rendered_options)
 
-    selected_item = [
-        list(c.values())[0] for c in options if list(c.keys())[0] == selected
-    ][0]
+    selected_item = [list(c.values())[0] for c in options if list(c.keys())[0] == selected][0]
 
     result[selected] = {}
 
@@ -43,9 +41,7 @@ def _prompt_choice_and_subitems(cookiecutter_dict, env, key, options, no_input):
 
             result[selected][subkey] = val
     elif isinstance(selected_item, list):
-        val = prompt_choice_for_config(
-            cookiecutter_dict, env, selected, selected_item, no_input
-        )
+        val = prompt_choice_for_config(cookiecutter_dict, env, selected, selected_item, no_input)
         result[selected] = val
     elif isinstance(selected_item, str):
         result[selected] = selected_item
@@ -73,15 +69,11 @@ def prompt_for_config(context, no_input=False):
         try:
             if isinstance(raw, list):
                 if isinstance(raw[0], dict):
-                    val = _prompt_choice_and_subitems(
-                        cookiecutter_dict, env, key, raw, no_input
-                    )
+                    val = _prompt_choice_and_subitems(cookiecutter_dict, env, key, raw, no_input)
                     cookiecutter_dict[key] = val
                 else:
                     # We are dealing with a choice variable
-                    val = prompt_choice_for_config(
-                        cookiecutter_dict, env, key, raw, no_input
-                    )
+                    val = prompt_choice_for_config(cookiecutter_dict, env, key, raw, no_input)
                     cookiecutter_dict[key] = val
             elif not isinstance(raw, dict):
                 # We are dealing with a regular variable

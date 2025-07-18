@@ -30,9 +30,7 @@ def default_ccds_main(f):
     """Set the default for the cookiecutter template argument to the CCDS template."""
 
     def _main(*args, **kwargs):
-        f.params[1].default = (
-            "https://github.com/drivendataorg/cookiecutter-data-science"
-        )
+        f.params[1].default = "https://github.com/drivendataorg/cookiecutter-data-science"
         # Find the "checkout" option in the cookiecutter cli (currently the fifth)
         # Per #389, set this to the currently released version by default
         param_names = [p.name for p in f.params]

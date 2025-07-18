@@ -43,3 +43,18 @@ ccds = "ccds.__main__:main"
 "Source Code" = "https://github.com/drivendataorg/cookiecutter-data-science/"
 "Bug Tracker" = "https://github.com/drivendataorg/cookiecutter-data-science/issues"
 "DrivenData" = "https://drivendata.co"
+
+[tool.ruff]
+line-length = 99
+src = ["ccds"]
+include = ["pyproject.toml", "ccds/**/*.py", "hooks/**/*.py", "tests/**/*.py", "docs/scripts/**/*.py"]
+
+[tool.ruff.lint]
+extend-select = ["I"]  # Add import sorting
+
+[tool.ruff.lint.isort]
+known-first-party = ["ccds"]
+force-sort-within-sections = true
+
+[tool.ruff.lint.per-file-ignores]
+"ccds/__main__.py" = ["E402"]  # Monkey-patching requires imports after modifications

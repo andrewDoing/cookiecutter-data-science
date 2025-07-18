@@ -259,14 +259,8 @@
                     "description": "Use ruff for linting and formatting.",
                     "more_information": ""
                 } 
-            },
-            {
-                "choice": "flake8+black+isort",
-                "help": {
-                    "description": "Use flake8 for linting and black+isort for formatting.",
-                    "more_information": ""
-                } 
             }
+
         ]
     },
     {

@@ -1,6 +1,6 @@
-import shutil
 from copy import copy
 from pathlib import Path
+import shutil
 
 # https://github.com/cookiecutter/cookiecutter/issues/824
 #   our workaround is to include these utility functions in the CCDS package
