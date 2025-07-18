@@ -1,5 +1,6 @@
 .PHONY: _prep create_environment requirements format lint docs docs-serve test \
-	test-fastest test-debug-fastest _clean_manual_test manual-test manual-test-debug
+	test-fastest test-debug-fastest _clean_manual_test manual-test manual-test-debug \
+	devcontainer-build devcontainer-up
 
 ## GLOBALS
 
@@ -93,3 +94,16 @@ manual-test: _prep _clean_manual_test
 manual-test-debug: _prep _clean_manual_test
 	mkdir -p manual_test
 	cd manual_test && python -m pdb ../ccds/__main__.py ..
+
+
+###     DEVELOPMENT CONTAINERS
+
+## Build the dev container
+devcontainer-build:
+	@command -v devcontainer >/dev/null 2>&1 || { echo "Dev Containers CLI not found. Install with: npm install -g @devcontainers/cli"; exit 1; }
+	devcontainer build --workspace-folder .
+
+## Start the dev container
+devcontainer-up:
+	@command -v devcontainer >/dev/null 2>&1 || { echo "Dev Containers CLI not found. Install with: npm install -g @devcontainers/cli"; exit 1; }
+	devcontainer up --workspace-folder .

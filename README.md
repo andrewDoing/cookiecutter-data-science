@@ -8,6 +8,7 @@ _A logical, reasonably standardized but flexible project structure for doing and
     <img src="https://img.shields.io/badge/CCDS-Project%20template-328F97?logo=cookiecutter" />
 </a>
 [![tests](https://github.com/drivendataorg/cookiecutter-data-science/actions/workflows/tests.yml/badge.svg)](https://github.com/drivendataorg/cookiecutter-data-science/actions/workflows/tests.yml)
+[![Open in Dev Containers](https://img.shields.io/static/v1?label=Dev%20Containers&message=Open&color=blue&logo=visualstudiocode)](https://vscode.dev/redirect?url=vscode://ms-vscode-remote.remote-containers/cloneInVolume?url=https://github.com/andrewDoing/cookiecutter-data-science)
 
 **Cookiecutter Data Science (CCDS)** is a tool for setting up a data science project template that incorporates best practices. To learn more about CCDS's philosophy, visit the [project homepage](https://cookiecutter-data-science.drivendata.org/).
 
@@ -109,6 +110,25 @@ cookiecutter https://github.com/drivendataorg/cookiecutter-data-science -c v1
 ## Contributing
 
 We welcome contributions! [See the docs for guidelines](https://cookiecutter-data-science.drivendata.org/contributing/).
+
+### Development Environment
+
+For the best development experience, we recommend using the provided dev container configuration:
+
+#### Using VS Code Dev Containers
+1. Install the [Dev Containers extension](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers)
+2. Open this project in VS Code
+3. When prompted, click "Reopen in Container"
+
+#### Using GitHub Codespaces
+1. Click the green "Code" button on GitHub
+2. Select "Codespaces" tab and create a new codespace
+
+The dev container includes Python 3.10, all development dependencies, and useful VS Code extensions pre-configured.
+
+### Manual Setup
+
+If you prefer to set up your development environment manually:
 
 ### Installing development requirements
 

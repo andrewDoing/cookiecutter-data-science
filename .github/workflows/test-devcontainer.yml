@@ -1,0 +1,38 @@
+name: Test Dev Container
+
+on:
+  push:
+    branches: [ master ]
+    paths: 
+      - '.devcontainer/**'
+      - 'dev-requirements.txt'
+      - 'Makefile'
+  pull_request:
+    branches: [ master ]
+    paths: 
+      - '.devcontainer/**'
+      - 'dev-requirements.txt' 
+      - 'Makefile'
+
+jobs:
+  test-devcontainer:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '18'
+
+    - name: Install Dev Containers CLI
+      run: npm install -g @devcontainers/cli
+
+    - name: Build dev container
+      run: devcontainer build --workspace-folder .
+
+    - name: Start dev container and run tests
+      run: |
+        devcontainer up --workspace-folder .
+        devcontainer exec --workspace-folder . make test-fastest

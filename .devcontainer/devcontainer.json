@@ -1,0 +1,71 @@
+{
+    "name": "Cookiecutter Data Science",
+    "image": "mcr.microsoft.com/devcontainers/python:3.10-bullseye",
+    
+    // Features to add to the dev container
+    "features": {
+        "ghcr.io/devcontainers/features/git:1": {},
+        "ghcr.io/devcontainers/features/github-cli:1": {},
+        "ghcr.io/devcontainers/features/node:1": {
+            "version": "18"
+        }
+    },
+    
+    // Configure tool-specific properties
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                "ms-python.python",
+                "ms-python.pylint",
+                "charliermarsh.ruff",
+                "ms-toolsai.jupyter",
+                "yzhang.markdown-all-in-one",
+                "davidanson.vscode-markdownlint",
+                "ms-vscode.makefile-tools",
+                "njpwerner.autodocstring",
+                "donjayamanne.python-environment-manager",
+                "ms-python.debugpy",
+                "github.vscode-github-actions"
+            ],
+            "settings": {
+                "python.defaultInterpreterPath": "/usr/local/bin/python",
+                "python.formatting.provider": "none",
+                "python.linting.enabled": true,
+                "python.linting.ruffEnabled": true,
+                "python.linting.pylintEnabled": false,
+                "python.linting.flake8Enabled": false,
+                "[python]": {
+                    "editor.defaultFormatter": "ms-python.python",
+                    "editor.formatOnSave": true,
+                    "editor.codeActionsOnSave": {
+                        "source.organizeImports": "explicit",
+                        "source.fixAll": "explicit"
+                    }
+                },
+                "files.exclude": {
+                    "**/__pycache__": true,
+                    "**/*.pyc": true,
+                    "**/.pytest_cache": true,
+                    "**/node_modules": true,
+                    "**/.coverage": true,
+                    "**/htmlcov": true
+                }
+            }
+        }
+    },
+    
+    // Use 'forwardPorts' to make a list of ports inside the container available locally
+    "forwardPorts": [8000, 8080, 5000],
+    
+    // Use 'postCreateCommand' to run commands after the container is created
+    "postCreateCommand": "pip install -r dev-requirements.txt && make _prep",
+    
+    // Comment out to connect as root instead. More info: https://aka.ms/dev-containers-non-root
+    "remoteUser": "vscode",
+    
+    // Set environment variables
+    "remoteEnv": {
+        "PYTHONPATH": "${containerWorkspaceFolder}",
+        "PROJECT_NAME": "cookiecutter-data-science"
+    }
+}
